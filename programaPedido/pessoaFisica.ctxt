@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.target=pessoaFisica
+comment1.params=nome\ email\ telefone\ Cpf
+comment1.target=pessoaFisica(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+numComments=2

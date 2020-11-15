@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.target=pessoaJuridica
+comment1.params=nome\ email\ telefone\ cnpj
+comment1.target=pessoaJuridica(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+numComments=2
