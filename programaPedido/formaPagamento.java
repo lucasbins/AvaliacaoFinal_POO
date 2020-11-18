@@ -1,19 +1,31 @@
-public class formaPagamento
+public class FormaPagamento
 {
-    // variáveis de instância - substitua o exemplo abaixo pelo seu próprio
-    int idForma;
     String forma;
     String descricao;
-    
-    
-    public formaPagamento(int idForma, String forma, String descricao)
+
+    public FormaPagamento(String forma, String descricao)
     {
-        this.idForma = idForma;
         this.forma = forma;
         this.descricao = descricao;
     }
-    
-    public String exibePagamento(){
+
+    public String getForma() {
+        return forma;
+    }
+
+    public void setForma(String forma) {
+        this.forma = forma;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String exibeDados(){
         return "Forma de pagamento " + forma;
     }
 }

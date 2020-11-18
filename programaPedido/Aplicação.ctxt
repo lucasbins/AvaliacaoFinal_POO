@@ -1,10 +1,17 @@
 #BlueJ class context
 comment0.target=Aplica\u00E7\u00E3o
-comment0.text=\r\n\ Escreva\ a\ descri\u00E7\u00E3o\ da\ classe\ Aplica\u00E7\u00E3o\ aqui.\r\n\ \r\n\ @author\ (seu\ nome)\ \r\n\ @version\ (n\u00FAmero\ de\ vers\u00E3o\ ou\ data)\r\n
-comment1.params=
-comment1.target=Aplica\u00E7\u00E3o()
-comment1.text=\r\n\ COnstrutor\ para\ objetos\ da\ classe\ Aplica\u00E7\u00E3o\r\n
-comment2.params=y
-comment2.target=int\ sampleMethod(int)
-comment2.text=\r\n\ Exemplo\ de\ m\u00E9todo\ -\ substitua\ este\ coment\u00E1rio\ pelo\ seu\ pr\u00F3prio\r\n\ \r\n\ @param\ \ y\ \ \ exemplo\ de\ um\ par\u00E2metro\ de\ m\u00E9todo\r\n\ @return\ \ \ \ \ a\ soma\ de\ x\ com\ y\ \r\n
-numComments=3
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=cc
+comment2.target=void\ cadastraCliente(ClienteController)
+comment3.params=cc
+comment3.target=void\ listaClientes(ClienteController)
+comment4.params=
+comment4.target=void\ menuPrincipal()
+comment5.params=
+comment5.target=void\ menuPedidos()
+comment6.params=
+comment6.target=void\ menuClientes()
+comment7.params=
+comment7.target=void\ menuServicos()
+numComments=8

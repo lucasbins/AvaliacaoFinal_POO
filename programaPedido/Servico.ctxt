@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=Servico
+comment1.params=tipo\ valorHora\ descricao
+comment1.target=Servico(java.lang.String,\ java.lang.Double,\ java.lang.String)
+comment2.params=
+comment2.target=java.lang.String\ getTipo()
+comment3.params=tipo
+comment3.target=void\ setTipo(java.lang.String)
+comment4.params=
+comment4.target=java.lang.Double\ getValorHora()
+comment5.params=valorHora
+comment5.target=void\ setValorHora(java.lang.Double)
+comment6.params=
+comment6.target=java.lang.String\ getDescricao()
+comment7.params=descricao
+comment7.target=void\ setDescricao(java.lang.String)
+comment8.params=
+comment8.target=java.lang.String\ exibeDados()
+numComments=9

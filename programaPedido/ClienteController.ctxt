@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=ClienteController
+comment1.params=
+comment1.target=ClienteController()
+comment2.params=pf
+comment2.target=boolean\ cadastraPf(PessoaFisica)
+comment3.params=pj
+comment3.target=boolean\ cadastraPj(PessoaJuridica)
+comment4.params=
+comment4.target=void\ listaPj()
+comment5.params=
+comment5.target=void\ listaPf()
+comment6.params=num
+comment6.target=PessoaFisica\ buscaClientePf(int)
+comment7.params=num
+comment7.target=PessoaJuridica\ buscaClientePj(int)
+numComments=8
