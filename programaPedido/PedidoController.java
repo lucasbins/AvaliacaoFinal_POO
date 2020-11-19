@@ -1,14 +1,14 @@
 import java.util.ArrayList;
 
-public class PedidoController {
+public class pedidoController {
 
     private ArrayList<Pedido> pedidos;
 
-    public PedidoController() {
+    public pedidoController() {
         pedidos = new ArrayList<Pedido>();
     }
 
-    public boolean cadastraServico(Pedido p) {
+    public boolean cadastraPedido(Pedido p) {
         return pedidos.add(p);
     }
 

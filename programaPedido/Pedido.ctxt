@@ -1,11 +1,11 @@
 #BlueJ class context
 comment0.target=Pedido
-comment1.params=cliente\ servico\ horas\ formaPagamento\ status
-comment1.target=Pedido(Cliente,\ Servico,\ double,\ FormaPagamento,\ char)
+comment1.params=cliente\ servico\ horas\ pagamento\ status
+comment1.target=Pedido(Cliente,\ Servico,\ double,\ boolean,\ boolean)
 comment10.params=
-comment10.target=char\ getStatus()
+comment10.target=boolean\ getStatus()
 comment11.params=status
-comment11.target=void\ setStatus(char)
+comment11.target=void\ setStatus(boolean)
 comment12.params=valorHora
 comment12.target=double\ valorPedido(double)
 comment13.params=
@@ -23,7 +23,7 @@ comment6.target=double\ getHoras()
 comment7.params=horas
 comment7.target=void\ setHoras(double)
 comment8.params=
-comment8.target=FormaPagamento\ getFormaPagamento()
-comment9.params=formaPagamento
-comment9.target=void\ setFormaPagamento(FormaPagamento)
+comment8.target=boolean\ getPagamento()
+comment9.params=pagamento
+comment9.target=void\ setPagamento(boolean)
 numComments=14

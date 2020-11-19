@@ -3,14 +3,14 @@ public class Pedido {
     private Cliente cliente;
     private Servico servico;
     private double horas;
-    private FormaPagamento formaPagamento;
-    private char status;
+    private boolean pagamento ;
+    private boolean status;
 
-    public Pedido(Cliente cliente, Servico servico, double horas, FormaPagamento formaPagamento, char status) {
+    public Pedido(Cliente cliente, Servico servico, double horas, boolean pagamento, boolean status) {
         this.cliente = cliente;
         this.servico = servico;
         this.horas = horas;
-        this.formaPagamento = formaPagamento;
+        this.pagamento = pagamento;
         this.status = status;
     }
 
@@ -38,19 +38,19 @@ public class Pedido {
         this.horas = horas;
     }
 
-    public FormaPagamento getFormaPagamento() {
-        return formaPagamento;
+    public boolean getPagamento() {
+        return pagamento;
     }
 
-    public void setFormaPagamento(FormaPagamento formaPagamento) {
-        this.formaPagamento = formaPagamento;
+    public void setPagamento(boolean pagamento) {
+        this.pagamento = pagamento;
     }
 
-    public char getStatus() {
+    public boolean getStatus() {
         return status;
     }
 
-    public void setStatus(char status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 
@@ -59,12 +59,17 @@ public class Pedido {
     }
 
     public String exibeDados() {
-        String dados = "Cliente:"+this.cliente.getNome()+"\nServico: "+this.servico.getTipo()+" - "+servico.getDescricao()+"\nHoras: "+this.horas+"\nPagamento:"+this.formaPagamento.getForma();
+        String dados = "Cliente:"+this.cliente.getNome()+"\nServico: "+this.servico.getTipo()+" - "+servico.getDescricao()+"\nHoras: "+this.horas;
+        String descricao_pagamento = "Pago";
         String descricao_status = "Finalizado";
-        if(this.status == 'P') {
+        if(this.status == false) {
             descricao_status = "Pendente";
         }
-        dados = dados+"\nStatus: "+descricao_status;
+        if(this.pagamento == false){
+            descricao_status = "Pendente";
+        }
+        
+        dados = dados+"\nStatus: "+descricao_status+"\nStatus de Pagamento:"+descricao_pagamento;
         return dados;
     }
 }

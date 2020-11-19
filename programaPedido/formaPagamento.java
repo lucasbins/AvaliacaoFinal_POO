@@ -1,9 +1,9 @@
-public class FormaPagamento
+public class formaPagamento
 {
     String forma;
     String descricao;
 
-    public FormaPagamento(String forma, String descricao)
+    public formaPagamento(String forma, String descricao)
     {
         this.forma = forma;
         this.descricao = descricao;

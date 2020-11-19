@@ -36,7 +36,7 @@ public class Servico
     }
 
     public String exibeDados(){
-        return "Serviço: " + tipo + "Valor Hora: " + valorHora;
+        return "\nServiço: " + tipo + " Valor Hora: " + valorHora + "\nDescrição do Serviço: " + descricao;
     }
 
 }

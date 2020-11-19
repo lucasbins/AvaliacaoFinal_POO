@@ -1,21 +1,21 @@
 import java.util.ArrayList;
 
-public class ClienteController {
+public class clienteController {
 
-    private ArrayList<PessoaJuridica> pessoasJuridicas;
-    private ArrayList<PessoaFisica> pessoasFisicas;
+    private ArrayList<pessoaJuridica> pessoasJuridicas;
+    private ArrayList<pessoaFisica> pessoasFisicas;
 
-    public ClienteController() {
-        pessoasJuridicas = new ArrayList<PessoaJuridica>();
-        pessoasFisicas = new ArrayList<PessoaFisica>();
+    public clienteController() {
+        pessoasJuridicas = new ArrayList<pessoaJuridica>();
+        pessoasFisicas = new ArrayList<pessoaFisica>();
 
     }
 
-    public boolean cadastraPf(PessoaFisica pf) {
+    public boolean cadastraPf(pessoaFisica pf) {
         return pessoasFisicas.add(pf);
     }
 
-    public boolean cadastraPj(PessoaJuridica pj) {
+    public boolean cadastraPj(pessoaJuridica pj) {
         return pessoasJuridicas.add(pj);
     }
 
@@ -35,14 +35,23 @@ public class ClienteController {
         }
     }
 
-    public PessoaFisica buscaClientePf(int num) {
-        PessoaFisica pf = null;
+    public pessoaFisica buscaClientePf(int num) {
+        pessoaFisica pf = null;
         pf = pessoasFisicas.get(num);
         return pf;
     }
+    
+    public void listaSimplesPf(){
+        int cont = 0;
+        while(cont < pessoasFisicas.size()) {
+            String dados = cont + " - " + pessoasFisicas.get(cont).getNome();
+            System.out.println(dados);
+            cont++;
+        }
+    }
 
-    public PessoaJuridica buscaClientePj(int num) {
-        PessoaJuridica pj = null;
+    public pessoaJuridica buscaClientePj(int num) {
+        pessoaJuridica pj = null;
         pj = pessoasJuridicas.get(num);
         return pj;
     }

@@ -1,9 +1,9 @@
 #BlueJ class context
-comment0.target=PedidoController
+comment0.target=pedidoController
 comment1.params=
-comment1.target=PedidoController()
+comment1.target=pedidoController()
 comment2.params=p
-comment2.target=boolean\ cadastraServico(Pedido)
+comment2.target=boolean\ cadastraPedido(Pedido)
 comment3.params=
 comment3.target=void\ listaPedidos()
 numComments=4
