@@ -17,9 +17,6 @@ public class aplicacao
 
         Scanner teclado = new Scanner(System.in);
 
-        formaPagamento pagamento1 = new formaPagamento("Transferencia","Descrição transferencia");
-        formaPagamento pagamento2 = new formaPagamento("Em dinheiro","Descricão pagamento em dinheiro");
-
         clienteController cliente = new clienteController();
         pedidoController pedido = new pedidoController();
         servicoController servico = new servicoController();
@@ -34,20 +31,23 @@ public class aplicacao
                     System.out.print ('\u000C');
                     System.out.println("Saindo");
                 break;
-                case 1:
+                case 1://CRUD PEDIDO
                     System.out.print ('\u000C');
                     menuPedidos();
                     opc2 = teclado.nextInt();
                     switch(opc2){
-                        case 1:
+                        case 1://Cadastra o Pedido
                             System.out.print ('\u000C');
                             System.out.println("1-Buscar Cliente");
                             System.out.println("2-Cadastrar Novo Cliente");
                             opc3 = teclado.nextInt();
                             switch(opc3){
                                 case 1:
-                                    cliente.listaSimplesPf(); //Busca somente o codigo e nome do cliente
-                                   
+                                    int tipoCliente = listaClientesSimples(cliente);//lista os cliente com Codigo e Nome
+                                    System.out.println("Digite o Codigo do Cliente: ");
+                                    int cod = teclado.nextInt();
+                                    cadastraPedido(pedido,cliente,servico, cod, tipoCliente);
+                                    System.out.println("\nCadastrado com Sucesso \nPressione enter para continuar");
                                     break;
                     
                                 case 2:
@@ -59,11 +59,15 @@ public class aplicacao
                                     System.out.println("Opção inválida");
                             }
                         break;
+                        case 2://Lista Pedido
+                            System.out.print ('\u000C');
+                            listaPedidos(pedido);
+                            System.in.read();
+                        break;
                     }
-                    System.out.println("Aqui vem pedidos");
                 break;
 
-                case 2:
+                case 2://CRUD CLIENTE
                     System.out.print ('\u000C');
                     menuClientes();
                     opc2 = teclado.nextInt();
@@ -87,7 +91,7 @@ public class aplicacao
 
                 break;
 
-                case 3:
+                case 3://CRUD SERVICO
                     System.out.print ('\u000C');
                     menuServicos();
                     opc2 = teclado.nextInt();
@@ -166,16 +170,42 @@ public class aplicacao
         ss.cadastraServico(s);
     }
     //cadastra o pedido  com o codigo do cliente.
-    public static void cadastraPedido(pedidoController pp, int num){
+    public static void cadastraPedido(pedidoController pp, clienteController cc, servicoController ss, int cod, int tipoCliente){
         Scanner teclado = new Scanner(System.in);
+        
         System.out.println("Cadastro de Pedido: ");
+    
+        listaServico(ss);
+        System.out.println("Tipo de Serviços: ");
+        int tipoServico = teclado.nextInt();
+        Servico servico = ss.buscaServico(tipoServico);
+        
+        System.out.println("Quantidade de horas de Trabalho: ");
+        Double horas = teclado.nextDouble();
+        
+        System.out.println("Status do Pagamento:");
+        boolean pagamento = teclado.nextBoolean();
+        
+        System.out.println("Status do pedido: ");
+        boolean status = teclado.nextBoolean();
+        
+        if(tipoCliente == 1){
+            Pedido p = new Pedido(cc.buscaClientePf(cod),servico,horas,pagamento,status);
+        }else{
+            Pedido p = new Pedido(cc.buscaClientePj(cod),servico,horas,pagamento,status);
+        }
         
         
     }
     
+    public static void listaPedidos(pedidoController pp) {
+        System.out.println("\nTodos os Pedidos");
+        pp.listaPedidos();
+    }
+    
     public static void listaServico(servicoController ss) {
         System.out.println("\nTodos os Tipos de Serviços");
-        ss.listaServicos();
+        ss.listaSimplesServico();
     }
     
     public static void listaClientes(clienteController cc) {
@@ -189,6 +219,20 @@ public class aplicacao
         }else{
             System.out.println("Opção inválida");
         }
+    }
+    
+    public static int listaClientesSimples(clienteController cc) {
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("Listar pessoa Física(1) ou Jurídica(2)");
+        int tipoCliente = teclado.nextInt();
+        if(tipoCliente == 1) {
+            cc.listaSimplesPf();
+        }else if(tipoCliente == 2){
+            cc.listaSimplesPj();
+        }else{
+            System.out.println("Opção inválida");
+        }
+        return tipoCliente;
     }
 
     public static void menuPrincipal() {

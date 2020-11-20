@@ -41,6 +41,12 @@ public class clienteController {
         return pf;
     }
     
+    public pessoaJuridica buscaClientePj(int num) {
+        pessoaJuridica pj = null;
+        pj = pessoasJuridicas.get(num);
+        return pj;
+    }
+    
     public void listaSimplesPf(){
         int cont = 0;
         while(cont < pessoasFisicas.size()) {
@@ -49,11 +55,13 @@ public class clienteController {
             cont++;
         }
     }
-
-    public pessoaJuridica buscaClientePj(int num) {
-        pessoaJuridica pj = null;
-        pj = pessoasJuridicas.get(num);
-        return pj;
+    
+    public void listaSimplesPj(){
+        int cont = 0;
+        while(cont < pessoasJuridicas.size()) {
+            String dados = cont + " - " + pessoasJuridicas.get(cont).getNome();
+            System.out.println(dados);
+            cont++;
+        }
     }
-
 }
