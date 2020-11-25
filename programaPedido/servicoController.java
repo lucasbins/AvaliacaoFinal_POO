@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
-public class servicoController {
+public class ServicoController {
 
     private ArrayList<Servico> servicos;
 
-    public servicoController() {
+    public ServicoController() {
         servicos = new ArrayList<Servico>();
     }
 
@@ -29,9 +29,14 @@ public class servicoController {
     public void listaSimplesServico(){
         int cont = 0;
         while(cont < servicos.size()) {
-            String dados = cont + " - " + servicos.get(cont).getTipo();
+            String dados = cont+1 + " - " + servicos.get(cont).getTipo();
             System.out.println(dados);
             cont++;
         }
+    }
+    
+    public boolean removeServico(int codigo){
+        Servico s = servicos.get(codigo);
+        return servicos.remove(s);
     }
 }

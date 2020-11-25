@@ -1,21 +1,21 @@
 import java.util.ArrayList;
 
-public class clienteController {
+public class ClienteController {
 
-    private ArrayList<pessoaJuridica> pessoasJuridicas;
-    private ArrayList<pessoaFisica> pessoasFisicas;
+    private ArrayList<PessoaJuridica> pessoasJuridicas;
+    private ArrayList<PessoaFisica> pessoasFisicas;
 
-    public clienteController() {
-        pessoasJuridicas = new ArrayList<pessoaJuridica>();
-        pessoasFisicas = new ArrayList<pessoaFisica>();
+    public ClienteController() {
+        pessoasJuridicas = new ArrayList<PessoaJuridica>();
+        pessoasFisicas = new ArrayList<PessoaFisica>();
 
     }
 
-    public boolean cadastraPf(pessoaFisica pf) {
+    public boolean cadastraPf(PessoaFisica pf) {
         return pessoasFisicas.add(pf);
     }
 
-    public boolean cadastraPj(pessoaJuridica pj) {
+    public boolean cadastraPj(PessoaJuridica pj) {
         return pessoasJuridicas.add(pj);
     }
 
@@ -35,33 +35,51 @@ public class clienteController {
         }
     }
 
-    public pessoaFisica buscaClientePf(int num) {
-        pessoaFisica pf = null;
+    public PessoaFisica buscaClientePf(int num) {
+        PessoaFisica pf = null;
         pf = pessoasFisicas.get(num);
         return pf;
     }
-    
-    public pessoaJuridica buscaClientePj(int num) {
-        pessoaJuridica pj = null;
+
+    public PessoaJuridica buscaClientePj(int num) {
+        PessoaJuridica pj = null;
         pj = pessoasJuridicas.get(num);
         return pj;
     }
-    
+
     public void listaSimplesPf(){
         int cont = 0;
         while(cont < pessoasFisicas.size()) {
-            String dados = cont + " - " + pessoasFisicas.get(cont).getNome();
+            String dados = cont+1 + " - " + pessoasFisicas.get(cont).getNome();
             System.out.println(dados);
             cont++;
         }
     }
-    
+
     public void listaSimplesPj(){
         int cont = 0;
         while(cont < pessoasJuridicas.size()) {
-            String dados = cont + " - " + pessoasJuridicas.get(cont).getNome();
+            String dados = cont+1 + " - " + pessoasJuridicas.get(cont).getNome();
             System.out.println(dados);
             cont++;
         }
+    }
+
+    public boolean removePj(int codigo){
+        PessoaJuridica pj = pessoasJuridicas.get(codigo);
+        return pessoasJuridicas.remove(pj);
+    }
+
+    public boolean removePf(int codigo){
+        PessoaFisica pf = pessoasFisicas.get(codigo);
+        return pessoasFisicas.remove(pf);
+    }
+
+    public int ultimoCadastroPj(){
+        return pessoasJuridicas.size()-1;
+    }
+
+    public int ultimoCadastroPf(){
+        return pessoasFisicas.size()-1;
     }
 }

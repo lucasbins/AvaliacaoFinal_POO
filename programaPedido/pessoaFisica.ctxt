@@ -1,7 +1,7 @@
 #BlueJ class context
-comment0.target=pessoaFisica
+comment0.target=PessoaFisica
 comment1.params=nome\ email\ telefone\ cpf
-comment1.target=pessoaFisica(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment1.target=PessoaFisica(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
 comment2.params=
 comment2.target=java.lang.String\ getCpf()
 comment3.params=cpf

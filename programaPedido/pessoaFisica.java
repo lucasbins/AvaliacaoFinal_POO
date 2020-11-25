@@ -1,8 +1,8 @@
-public class pessoaFisica extends Cliente
+public class PessoaFisica extends Cliente
 {
     String cpf;
 
-    public pessoaFisica(String nome, String email, String telefone, String cpf)
+    public PessoaFisica(String nome, String email, String telefone, String cpf)
     {
         super (nome, email, telefone);
 
@@ -18,7 +18,7 @@ public class pessoaFisica extends Cliente
     }
 
     public String exibeDados() {
-        String dados = "Cliente:"+this.nome+"\nCPF: "+this.cpf+"\nEmail: "+this.email+"\nTelefone: "+this.telefone;
+        String dados = "\nCliente:"+this.nome+"\nCPF: "+this.cpf+"\nEmail: "+this.email+"\nTelefone: "+this.telefone;
         return dados;
     }
 }
