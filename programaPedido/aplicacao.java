@@ -1,4 +1,4 @@
-    
+
 /**
 * Escreva a descrição da classe Aplicação aqui.
 * 
@@ -8,7 +8,7 @@
 import java.util.Scanner;
 import java.io.IOException;
 public class Aplicacao
-{
+    {
     // variáveis de instância - substitua o exemplo abaixo pelo seu próprio
     private int x;
     
@@ -44,25 +44,33 @@ public class Aplicacao
                             switch(opc3){
                                 case 1:
                                     tipoCliente = listaClientesSimples(cliente);//lista os cliente com Codigo e Nome
-                                    System.out.println("Digite o código do cliente: ");
-                                    cod = teclado.nextInt()-1;
-                                    cadastraPedido(pedido,cliente,servico, cod, tipoCliente);
-                                    System.out.println("\nCadastrado com Sucesso \nPressione enter para continuar");
-                                    break;
+                                        if(tipoCliente == 1 || tipoCliente == 2){
+                                        System.out.println("Digite o código do cliente: ");
+                                        cod = teclado.nextInt()-1;
+                                        cadastraPedido(pedido,cliente,servico, cod, tipoCliente);
+                                        System.out.println("\nCadastrado com Sucesso");
+                                    }
+                                    System.out.println("\nPressione enter para continuar");
+                                    System.in.read();
+                                break;
                     
                                 case 2:
+                                    
                                     tipoCliente = cadastraCliente(cliente);
-                                    System.out.println("\nCadastrado com Sucesso \nPressione enter para continuar");
-                                    System.in.read();
-                                    if(tipoCliente ==1){
-                                        cod = cliente.ultimoCadastroPf();
-                                        cadastraPedido(pedido,cliente,servico, cod, tipoCliente);
+                                    if(tipoCliente == 1 || tipoCliente == 2){
                                         System.out.println("\nCadastrado com Sucesso \nPressione enter para continuar");
-                                    }else if(tipoCliente == 2){
-                                        cod = cliente.ultimoCadastroPf();
+                                        System.in.read();
+                                        cod = 1;
+                                        if(tipoCliente ==1){
+                                            cod = cliente.totalPf()-1; //pegar ultimo cliente cadastrado
+                                        }else if(tipoCliente == 2){
+                                            cod = cliente.totalPj(); //pegar ultimo cliente cadastrado
+                                        }
                                         cadastraPedido(pedido,cliente,servico, cod, tipoCliente);
-                                        System.out.println("\nCadastrado com Sucesso \nPressione enter para continuar");
+                                        System.out.println("\nCadastrado com Sucesso");
                                     }
+                                    System.out.println("\nPressione enter para continuar");
+                                    System.in.read();
                                     
                                 break;
                                 default:
@@ -71,25 +79,35 @@ public class Aplicacao
                         break;
                         case 2://Lista Pedido
                             System.out.print ('\u000C');
-                            listaPedidos(pedido);
+                            if(existePedidos(pedido)){
+                                listaPedidos(pedido);
+                            }
+                            System.out.println("\nPressione enter para continuar");
                             System.in.read();
                         break;
                         case 3: //Busca Pedidos 
                             System.out.print ('\u000C');
-                            System.out.print ("Buscar Pedidos\n");
-                            System.out.println("1-Pedidos Pendentes");
-                            System.out.println("2-Pedidos Finalizados");
-                            System.out.println("3-Pedidos Pagos");
-                            System.out.println("4-Pedidos sem Pagamento");
-                            int tipoBusca = teclado.nextInt();
-                            buscaPedido(pedido,tipoBusca);
+                            if(existePedidos(pedido)){
+                                System.out.print ("Buscar Pedidos\n");
+                                System.out.println("1-Pedidos Pendentes");
+                                System.out.println("2-Pedidos Finalizados");
+                                System.out.println("3-Pedidos Pagos");
+                                System.out.println("4-Pedidos sem Pagamento");
+                                int tipoBusca = teclado.nextInt();
+                                buscaPedido(pedido,tipoBusca);
+                            }
+                            System.out.println("\nPressione enter para continuar");
                             System.in.read();
                         break;
                         case 4: //Excluir Pedidos
                             System.out.print ('\u000C');
-                            excluiPedido(pedido);
-                            System.out.println("\nExcluído com sucesso \nPressione enter para continuar");
+                            if(existePedidos(pedido)){
+                                excluiPedido(pedido);
+                                System.out.println("\nExcluído com sucesso");
+                            }
+                            System.out.println("\nPressione enter para continuar");
                             System.in.read();
+                          
                         break;
                         default:
                             System.out.println("\nOpção inválida");
@@ -104,12 +122,14 @@ public class Aplicacao
                 
                     switch(opc2){
                         case 1:
+                            System.out.print ('\u000C');
                             cadastraCliente(cliente);
                             System.out.println("\nCadastrado com Sucesso \nPressione enter para continuar");
                             System.in.read();
                         break;
                     
                         case 2:
+                            System.out.print ('\u000C');
                             listaClientes(cliente);
                             System.out.println("\nPressione enter para continuar");
                             System.in.read();
@@ -118,8 +138,11 @@ public class Aplicacao
                             System.out.print ('\u000C');
                             System.out.println("Excluir pessoa Física(1) ou Jurídica(2)");
                             int tipoClienteExcluir = teclado.nextInt();
-                            excluiCliente(cliente,tipoClienteExcluir);
-                            System.out.println("\nExcluído com sucesso \nPressione enter para continuar");
+                            if(existeCliente(cliente,tipoClienteExcluir)){
+                                excluiCliente(cliente,tipoClienteExcluir);
+                                System.out.println("\nExcluído com sucesso");
+                            }
+                            System.out.println("\nPressione enter para continuar");
                             System.in.read();
                         break;
                         default:
@@ -136,19 +159,26 @@ public class Aplicacao
                     opc2 = teclado.nextInt();
                     switch(opc2){
                         case 1:
+                            System.out.print ('\u000C');
                             cadastraServico(servico);
                             System.out.println("\nCadastrado com Sucesso \nPressione enter para continuar");
                             System.in.read();
                         break;
                         case 2:
-                            listaServico(servico);
+                            System.out.print ('\u000C');
+                            if(existeServicos(servico)){
+                                listaServico(servico);
+                            }
                             System.out.println("\nPressione enter para continuar");
                             System.in.read();
                         break;
                         case 3: 
                             System.out.print ('\u000C');
-                            excluiServico(servico);
-                            System.out.println("\nExcluído com sucesso \nPressione enter para continuar");
+                            if(existeServicos(servico)){
+                                excluiServico(servico);
+                                System.out.println("\nExcluído com sucesso");
+                            }
+                            System.out.println("\nPressione enter para continuar");
                             System.in.read();
                         break;
                         default:
@@ -165,6 +195,7 @@ public class Aplicacao
     }
     
     public static int cadastraCliente(ClienteController cc) {
+        System.out.println("Cadastro de cliente\n");
         Scanner teclado = new Scanner(System.in);
         System.out.println("Cadastrar pessoa Física(1) ou Jurídica(2)");
         int tipoCliente = teclado.nextInt();
@@ -227,7 +258,7 @@ public class Aplicacao
         
         System.out.println("Cadastro de Pedido: ");
         listaServicoSimples(ss);
-        System.out.println("Tipo de Serviços: ");
+        System.out.println("Digite o código do serviço: ");
         int tipoServico = teclado.nextInt()-1;
         Servico servico = ss.buscaServico(tipoServico);
         
@@ -260,56 +291,58 @@ public class Aplicacao
     public static void buscaPedido(PedidoController pp, int tipo){
         System.out.print ('\u000C');
         Scanner teclado = new Scanner(System.in);
-        int cod; 
+        int cod,qntPedido = 0; 
         String opc;
         boolean alterar_status = true;
+        
         switch(tipo){
             case 1:
                 System.out.println("\nPedidos pendentes\n");
-                pp.buscaPedidosStatus(false);
+                qntPedido = pp.buscaPedidosStatus(false);
                 alterar_status = true;
             break;
             case 2:
                 System.out.println("\nPedidos finalizados\n");
-                pp.buscaPedidosStatus(true);
+                qntPedido = pp.buscaPedidosStatus(true);
                 alterar_status = false;
             break;
             case 3:
                 System.out.println("\nPedidos pagos\n");
-                pp.buscaPedidosPagamento(true);
+                qntPedido = pp.buscaPedidosPagamento(true);
                 alterar_status = false;
             break;
             case 4:
                 System.out.println("\nPedidos com pagamentos pendentes\n");
-                pp.buscaPedidosPagamento(false);
+                qntPedido = pp.buscaPedidosPagamento(false);
                 alterar_status = true;
+            break;
             default:
                 System.out.println("\nOpção inválida");
             break;
         }
-               
-        System.out.println("\nDeseja atualizar o status de algum pedido? (S)im / (N)ão");
-        opc = teclado.next();
-        if(opc.equals("S") || opc.equals("s")){
-            System.out.println("\nInforme o codigo do pedido");
-            cod = teclado.nextInt()-1;
-            Pedido pedido = pp.buscaPedido(cod);
-            if(tipo <=2){
-                pedido.setStatus(alterar_status);  
-            }else{
-                pedido.setPagamento(alterar_status);  
+
+        if(qntPedido > 0){       
+            System.out.println("\nDeseja atualizar o status de algum pedido? (S)im / (N)ão");
+            opc = teclado.next();
+            if(opc.equals("S") || opc.equals("s")){
+                System.out.println("\nInforme o codigo do pedido");
+                cod = teclado.nextInt()-1;
+                Pedido pedido = pp.buscaPedido(cod);
+                if(tipo <=2){
+                    pedido.setStatus(alterar_status);  
+                }else{
+                    pedido.setPagamento(alterar_status);  
+                }
+                System.out.println("\nPedido atualizado com sucesso");
             }
-            System.out.println("\nPedido atualizado com sucesso");
+        }else{
+            System.out.println("\nNenhum pedido encontrado");
         }
     }
-    
-    public static void listaPedidos(PedidoController pp) {
-        System.out.println("\nTodos os Pedidos");
-        pp.listaPedidos();
-    }
-    
+   
     public static void listaServico(ServicoController ss) {
-        System.out.println("\nTodos os Tipos de Serviços");
+       
+        System.out.println("Todos os Tipos de Serviços");
         ss.listaServicos();
     }
     
@@ -320,12 +353,17 @@ public class Aplicacao
     
     public static void listaClientes(ClienteController cc) {
         Scanner teclado = new Scanner(System.in);
+        System.out.println("Lista de Clientes:\n");
         System.out.println("Listar pessoa Física(1) ou Jurídica(2)");
         int tipoCliente = teclado.nextInt();
         if(tipoCliente == 1) {
-            cc.listaPf();
+            if(existeCliente(cc,1)){
+                cc.listaPf();
+            }
         }else if(tipoCliente == 2){
-            cc.listaPj();
+            if(existeCliente(cc,2)){
+                cc.listaPj();
+            }
         }else{
             System.out.println("Opção inválida");
         }
@@ -336,13 +374,62 @@ public class Aplicacao
         System.out.println("Listar pessoa Física(1) ou Jurídica(2)");
         int tipoCliente = teclado.nextInt();
         if(tipoCliente == 1) {
-            cc.listaSimplesPf();
+            if(existeCliente(cc,1)){
+                cc.listaSimplesPf();
+            }else{
+                tipoCliente = 3; //opção inválida para não continuar cadastro
+            }
         }else if(tipoCliente == 2){
-            cc.listaSimplesPj();
+             if(existeCliente(cc,2)){
+                cc.listaSimplesPj();
+            }else{
+                tipoCliente = 3;  //opção inválida para não continuar cadastro
+            }
         }else{
             System.out.println("Opção inválida");
         }
         return tipoCliente;
+    }
+    
+        public static void listaPedidos(PedidoController pp) {
+        if(existePedidos(pp)){
+            System.out.println("\nTodos os pedidos:");
+            pp.listaPedidos();
+        }
+    }
+    
+    public static boolean existePedidos(PedidoController pp){
+        boolean existe = true;
+         if(pp.totalPedidos() == 0){
+            System.out.println("\nNão há pedidos cadastrados");  
+            existe = false;
+        } 
+        return existe;
+    }
+    
+    public static boolean existeCliente(ClienteController cc, int tipo){
+        boolean existe = true;
+        if(tipo == 1){
+            if(cc.totalPf() == 0){
+                System.out.println("\nNão há clientes cadastrados");  
+                existe = false;
+            }
+        }else{
+            if(cc.totalPj() == 0){
+                System.out.println("\nNão há clientes cadastrados");  
+                existe = false;
+            } 
+        }
+        return existe;
+    }
+    
+    public static boolean existeServicos(ServicoController ss){
+        boolean existe = true;
+         if(ss.totalServicos() == 0){
+            System.out.println("\nNão há servicos cadastrados");  
+            existe = false;
+        } 
+        return existe;
     }
     
     public static void excluiPedido(PedidoController pp){
@@ -371,7 +458,7 @@ public class Aplicacao
     
     public static void excluiServico(ServicoController ss){
         Scanner teclado = new Scanner(System.in);
-        System.out.println("\nExcluir Servico\n");
+        System.out.println("Excluir Serviço");
         listaServicoSimples(ss);
         System.out.println("\nInforme o código do servico a ser excluído");
         int codServico = teclado.nextInt()-1;

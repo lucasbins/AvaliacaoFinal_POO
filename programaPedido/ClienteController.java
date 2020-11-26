@@ -75,11 +75,12 @@ public class ClienteController {
         return pessoasFisicas.remove(pf);
     }
 
-    public int ultimoCadastroPj(){
-        return pessoasJuridicas.size()-1;
+    public int totalPj(){
+        return pessoasJuridicas.size();
     }
 
-    public int ultimoCadastroPf(){
-        return pessoasFisicas.size()-1;
+    public int totalPf(){
+        return pessoasFisicas.size();
     }
+
 }

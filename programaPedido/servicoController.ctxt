@@ -12,4 +12,6 @@ comment5.params=
 comment5.target=void\ listaSimplesServico()
 comment6.params=codigo
 comment6.target=boolean\ removeServico(int)
-numComments=7
+comment7.params=
+comment7.target=int\ totalServicos()
+numComments=8

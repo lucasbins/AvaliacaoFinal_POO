@@ -39,4 +39,8 @@ public class ServicoController {
         Servico s = servicos.get(codigo);
         return servicos.remove(s);
     }
+    
+    public int totalServicos(){
+        return servicos.size();
+    }
 }
